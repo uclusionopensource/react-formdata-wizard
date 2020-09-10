@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /**
  * Gets the deserialized object from local storage pointed to by storageKey,
  * or returns an empty object if one is not found

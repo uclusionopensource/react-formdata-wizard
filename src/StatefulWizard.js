@@ -1,4 +1,5 @@
 import React, { useReducer, useState } from 'react'
+import PropTypes from 'prop-types'
 import { generateLocalStorageBackedReducer } from './localStorageUtils'
 import { reducer, resetValues, updateValues } from './wizardReducer'
 
@@ -6,8 +7,14 @@ function StatefulWizard(props) {
   const { children, name, onStartOver, onFinish, resetSetter } = props
   const childArray = React.Children.toArray(children)
   // set up a local storage backed reducer, so that we get resumes across reload, etc
-  const { storageBackedReducer, initialValue } = generateLocalStorageBackedReducer(name, reducer)
-  const [formData, formDataDispatch] = useReducer(storageBackedReducer, initialValue)
+  const {
+    storageBackedReducer,
+    initialValue
+  } = generateLocalStorageBackedReducer(name, reducer)
+  const [formData, formDataDispatch] = useReducer(
+    storageBackedReducer,
+    initialValue
+  )
   const initialStepState = {
     currentStep: 0,
     totalSteps: childArray.length
@@ -97,6 +104,19 @@ function StatefulWizard(props) {
 
   resetSetter(resetWizard)
   return getCurrentStepContents()
+}
+
+StatefulWizard.propTypes = {
+  onFinish: PropTypes.func,
+  resetSetter: PropTypes.func,
+  onStartOver: PropTypes.func,
+  name: PropTypes.string.isRequired
+}
+
+StatefulWizard.defaultProps = {
+  onFinish: () => {},
+  resetSetter: () => {},
+  onStartOver: () => {}
 }
 
 export { StatefulWizard }

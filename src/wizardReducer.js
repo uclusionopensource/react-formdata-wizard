@@ -1,5 +1,5 @@
-const RESET_VALUES = 'RESET_VALUES';
-const UPDATE_VALUES = 'UPDATE_VALUES';
+const RESET_VALUES = 'RESET_VALUES'
+const UPDATE_VALUES = 'UPDATE_VALUES'
 
 /**
  * Returns a message to the reducer that updates
@@ -13,7 +13,7 @@ export function updateValues(newValues) {
   return {
     type: UPDATE_VALUES,
     newValues
-  };
+  }
 }
 
 /**
@@ -24,20 +24,20 @@ export function updateValues(newValues) {
 export function resetValues() {
   return {
     type: RESET_VALUES
-  };
+  }
 }
 
 export function reducer(state, action) {
-  const { type } = action;
+  const { type } = action
   switch (type) {
     case UPDATE_VALUES:
       return {
         ...state,
         ...action.newValues
-      };
+      }
     case RESET_VALUES:
-      return {};
+      return {}
     default:
-      return state;
+      return state
   }
 }
