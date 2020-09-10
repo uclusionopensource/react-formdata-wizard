@@ -5,11 +5,11 @@
  * @returns {{}|any}
  */
 function getStorageObject(storageKey) {
-  const storage = localStorage.getItem(storageKey);
+  const storage = localStorage.getItem(storageKey)
   if (!storage) {
-    return {};
+    return {}
   }
-  return JSON.parse(storage);
+  return JSON.parse(storage)
 }
 
 /**
@@ -20,9 +20,9 @@ function getStorageObject(storageKey) {
  */
 function setStorageObject(storageKey, value) {
   if (value) {
-    localStorage.setItem(storageKey, JSON.stringify(value));
+    localStorage.setItem(storageKey, JSON.stringify(value))
   } else {
-    localStorage.removeItem(storageKey);
+    localStorage.removeItem(storageKey)
   }
 }
 
@@ -36,11 +36,10 @@ function setStorageObject(storageKey, value) {
  */
 export function generateLocalStorageBackedReducer(localStorageKey, reducer) {
   const storageBackedReducer = (state, action) => {
-    const newState = reducer(state, action);
-    setStorageObject(localStorageKey, newState);
-    return newState;
-  };
-  const initialValue = getStorageObject(localStorageKey);
-  return { storageBackedReducer, initialValue };
+    const newState = reducer(state, action)
+    setStorageObject(localStorageKey, newState)
+    return newState
+  }
+  const initialValue = getStorageObject(localStorageKey)
+  return { storageBackedReducer, initialValue }
 }
-

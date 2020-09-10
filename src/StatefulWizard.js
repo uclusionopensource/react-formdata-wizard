@@ -1,15 +1,14 @@
 import React, { useReducer, useState } from 'react'
 import PropTypes from 'prop-types'
 import { generateLocalStorageBackedReducer } from './localStorageUtils'
-import { reducer, resetValues } from './wizardReducer'
+import { reducer, resetValues, updateValues } from './wizardReducer'
 
 export function StatefulWizard(props) {
-  const { children, name, onStartOver, onFinish } = props
+  const { children, name, onStartOver, onFinish, resetSetter } = props
   const childArray = React.Children.toArray(children)
   // set up a local storage backed reducer, so that we get resumes across reload, etc
   const { storageBackedReducer, initialValue } = generateLocalStorageBackedReducer(name, reducer)
   const [formData, formDataDispatch] = useReducer(storageBackedReducer, initialValue)
-
   const initialStepState = {
     currentStep: 0,
     totalSteps: childArray.length
@@ -30,20 +29,22 @@ export function StatefulWizard(props) {
   /**
    * Start over just resets us, and calls the start over function
    */
-  function myOnStartOver() {
+  function startOver() {
     // zero all form data
     resetWizard()
     onStartOver()
-  }
+
 
   /**
-   * On finish clones the data so that future object updates don't get lost,
-   * then calls onFinish with the cloned data, and then resets us
-   * @param formData
+   * finish calls onFinish with either the passed in finish value or the form data at time of creation
+   * @param finishValue Optional, if not passed, the form data at time of bind of this function will be passed
    */
-  function myOnFinish(formData) {
-    const cloned = { ...formData }
-    onFinish(cloned)
+  function finish(finishValue) {
+    if (finishValue) {
+      onFinish(finishValue)
+    } else {
+      onFinish(formData)
+    }
     resetWizard()
   }
 
@@ -78,12 +79,13 @@ export function StatefulWizard(props) {
     const props = {
       ...stepState,
       formData,
-      formDataDispatch,
+      updateFormData: (data) => formDataDispatch(updateValues(data)),
+      clearFormData: () => formDataDispatch(resetValues()),
       nextStep,
       previousStep,
-      onStartOver: myOnStartOver,
+      startOver,
       active: true,
-      onFinish: myOnFinish
+      finish
     }
     const currentStep = childArray[stepState.currentStep]
     if (!currentStep) {
@@ -94,19 +96,22 @@ export function StatefulWizard(props) {
     return React.cloneElement(currentStep, props)
   }
 
-  const currentStep = getCurrentStepContents()
-  return currentStep;
+  resetSetter(resetWizard)
+  return getCurrentStepContents()
 }
 
 StatefulWizard.propTypes = {
   name: PropTypes.string.isRequired,
   onStartOver: PropTypes.func,
-  onFinish: PropTypes.func
+  onFinish: PropTypes.func,
+  resetSetter: PropTypes.func
 }
 
 StatefulWizard.defaultProps = {
   onStartOver: () => {
   },
   onFinish: () => {
+  },
+  resetSetter: () => {
   }
 }
