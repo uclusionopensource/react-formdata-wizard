@@ -1,3 +1,4 @@
+![UclusionWizard](./UclusionWizard.png)
 # react-stateful-wizard
 
 > React wizard that maintains step state and form data for you. Form data is automagically
