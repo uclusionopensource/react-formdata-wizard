@@ -1,7 +1,7 @@
 {
   "name": "react-formdata-wizard",
   "version": "1.0.0",
-  "description": "Made with create-react-library",
+  "description": "A wizard library focusing on keeping entered form data even across reloads",
   "author": "BFUculsion",
   "license": "GPLv3",
   "repository": "BFUculsion/react-formdata-wizard",
