@@ -1,10 +1,10 @@
 {
-  "name": "react-stateful-wizard",
+  "name": "react-formdata-wizard",
   "version": "1.0.0",
   "description": "Made with create-react-library",
   "author": "BFUculsion",
   "license": "GPLv3",
-  "repository": "BFUculsion/react-stateful-wizard",
+  "repository": "BFUculsion/react-formdata-wizard",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",

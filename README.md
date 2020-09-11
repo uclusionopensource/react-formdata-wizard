@@ -1,16 +1,16 @@
 ![UclusionWizard](./UclusionWizard.png)
-# react-stateful-wizard
+# react-formdata-wizard
 
 > React wizard that maintains step state and form data for you. Form data is automagically
 >saved to the local storage of the browser, so you don't have to worry about reloads
 > or any other ram-state destroying event.
 
-[![NPM](https://img.shields.io/npm/v/react-stateful-wizard.svg)](https://www.npmjs.com/package/react-stateful-wizard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-formdata-wizard.svg)](https://www.npmjs.com/package/react-formdata-wizard) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save react-stateful-wizard
+npm install --save react-formdata-wizard
 ```
 
 ## Usage
@@ -18,8 +18,8 @@ npm install --save react-stateful-wizard
 ```jsx
 import React, { Component } from 'react'
 
-import StatefulWizard from 'react-stateful-wizard'
-import 'react-stateful-wizard/dist/index.css'
+import StatefulWizard from 'react-formdata-wizard'
+import 'react-formdata-wizard/dist/index.css'
 
 class Example extends Component {
   render() {

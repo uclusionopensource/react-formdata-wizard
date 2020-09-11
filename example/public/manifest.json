@@ -1,6 +1,6 @@
 {
-  "short_name": "react-stateful-wizard",
-  "name": "react-stateful-wizard",
+  "short_name": "react-formdata-wizard",
+  "name": "react-formdata-wizard",
   "icons": [
     {
       "src": "favicon.ico",

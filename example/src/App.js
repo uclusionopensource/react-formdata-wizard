@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ExampleFirst from './steps/ExampleFirst'
 import ExampleSecond from './steps/ExampleSecond'
-import StatefulWizard from 'react-stateful-wizard'
+import StatefulWizard from 'react-formdata-wizard'
 import ExampleThird from './steps/ExampleThird'
 import ExampleFourth from './steps/ExampleFourth'
 import ExampleFifth from './steps/ExampleFifth'
