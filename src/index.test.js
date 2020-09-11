@@ -5,7 +5,7 @@ import { StatefulWizard } from './StatefulWizard'
 const Step1 = (props) => <button onClick={props.nextStep} />
 const StepLast = (props) => <button onClick={props.finish('foo')} />
 
-test('Wizard advances to stepLast', () => {
+test('Renders only the first step', () => {
   const component = Renderer.create(
     <StatefulWizard name='simple'>
       <Step1 />

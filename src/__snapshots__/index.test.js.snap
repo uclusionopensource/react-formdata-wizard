@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Wizard advacnes to stepLast 1`] = `
+exports[`Renders only the first step 1`] = `
 <button
   onClick={[Function]}
 />

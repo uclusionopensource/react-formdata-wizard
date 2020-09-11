@@ -66,4 +66,4 @@ finish | function taking one optional argument that calls the provided onFinish 
 
 ## License
 
-GPLv3 © [BFUculsion](https://github.com/BFUculsion)
+GPLv3 © Uclusion Inc, 2020 [BFUculsion](https://github.com/BFUculsion)
