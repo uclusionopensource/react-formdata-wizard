@@ -1,3 +1,3 @@
-import { StatefulWizard } from './StatefulWizard'
+import { FormdataWizard } from './FormdataWizard'
 
-export default StatefulWizard
+export default FormdataWizard

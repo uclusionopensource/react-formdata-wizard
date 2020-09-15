@@ -18,17 +18,17 @@ npm install --save react-formdata-wizard
 ```jsx
 import React, { Component } from 'react'
 
-import StatefulWizard from 'react-formdata-wizard'
+import FormdataWizard from 'react-formdata-wizard'
 import 'react-formdata-wizard/dist/index.css'
 
 class Example extends Component {
   render() {
     return (
-      <StatefulWizard>
+      <FormdataWizard>
         <Step0/>
         <Step1/>
         ...
-      </StatefulWizard>
+      </FormdataWizard>
   )
   }
 }

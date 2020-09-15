@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ExampleFirst from './steps/ExampleFirst'
 import ExampleSecond from './steps/ExampleSecond'
-import StatefulWizard from 'react-formdata-wizard'
+import FormdataWizard from 'react-formdata-wizard'
 import ExampleThird from './steps/ExampleThird'
 import ExampleFourth from './steps/ExampleFourth'
 import ExampleFifth from './steps/ExampleFifth'
@@ -17,13 +17,13 @@ const App = () => {
 
   return (
     <div>
-    <StatefulWizard name="foo" onFinish={onFinsh}>
+    <FormdataWizard name="foo" onFinish={onFinsh}>
       <ExampleFirst/>
       <ExampleSecond/>
       <ExampleThird/>
       <ExampleFourth/>
       <ExampleFifth/>
-    </StatefulWizard>
+    </FormdataWizard>
       {lastForm && (<div>
         Last form step 3 called with {lastForm.thirdInput}
       </div>)}
