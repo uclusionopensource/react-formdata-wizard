@@ -44,3 +44,11 @@ export function generateLocalStorageBackedReducer(localStorageKey, reducer) {
   const initialValue = getStorageObject(localStorageKey)
   return { storageBackedReducer, initialValue }
 }
+
+/**
+ * Empties the storage for the given local storage key
+ * @param localStorageKey the key to clear data for
+ */
+export function clearStorage(localStorageKey){
+  localStorage.removeItem(localStorageKey);
+}

@@ -1,6 +1,6 @@
 import React, { useReducer, useState } from 'react'
 import PropTypes from 'prop-types'
-import { generateLocalStorageBackedReducer } from './localStorageUtils'
+import { clearStorage, generateLocalStorageBackedReducer } from './localStorageUtils'
 import { reducer, resetValues, updateValues } from './wizardReducer'
 
 function FormdataWizard(props) {
@@ -28,6 +28,8 @@ function FormdataWizard(props) {
    */
   function resetWizard() {
     formDataDispatch(resetValues())
+    // we'll also manually, clear the stored data, in case we navigate away before the dispatcher fires
+    clearStorage(name);
     // reset the step state
     setStepState(initialStepState)
   }

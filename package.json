@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A wizard library focusing on keeping entered form data even across reloads",
   "author": "BFUculsion",
-  "license": "GPLv3",
+  "license": "GPL-3.0-or-later",
   "repository": "uclusionopensource/react-formdata-wizard",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
