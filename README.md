@@ -49,6 +49,7 @@ name | the 'name' of the wizard. Should be unique as it will determine the local
 onStartOver | function called with zero arguments that is called when the form is started over _without_ completing | N
 onFinish | function called with either the form data or a specific return value that is called when the form finishes normally | N
 resetSetter | function that will be called with a variable containing a function that can reset the wizard. This allows higher level components to cause a reset for their own reasons. | N
+defaultFormData | default form data to apply on creation if nothing is stored locally. | N
 
 
 ## Props provided to All Children
