@@ -31,17 +31,26 @@ function setStorageObject(storageKey, value) {
  * Generated a reducer that backs all data with local storage.
  * @param localStorageKey the key to store the data under
  * @param reducer a reducer that outputs new states
+ * @param defaultValue value to initialize to if nothing is stored locally
  * @returns a tuple containing
  * the transformed reducer that backs all resultant states by the local storage,
  * and any stored initial value for that reducer
  */
-export function generateLocalStorageBackedReducer(localStorageKey, reducer) {
+export function generateLocalStorageBackedReducer(
+  localStorageKey,
+  reducer,
+  defaultValue
+) {
   const storageBackedReducer = (state, action) => {
     const newState = reducer(state, action)
     setStorageObject(localStorageKey, newState)
     return newState
   }
-  const initialValue = getStorageObject(localStorageKey)
+  let initialValue = getStorageObject(localStorageKey)
+  if (initialValue === {} && defaultValue) {
+    setStorageObject(localStorageKey, defaultValue)
+    initialValue = defaultValue
+  }
   return { storageBackedReducer, initialValue }
 }
 
@@ -49,6 +58,6 @@ export function generateLocalStorageBackedReducer(localStorageKey, reducer) {
  * Empties the storage for the given local storage key
  * @param localStorageKey the key to clear data for
  */
-export function clearStorage(localStorageKey){
-  localStorage.removeItem(localStorageKey);
+export function clearStorage(localStorageKey) {
+  localStorage.removeItem(localStorageKey)
 }

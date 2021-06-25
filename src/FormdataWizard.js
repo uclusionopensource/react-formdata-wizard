@@ -1,16 +1,26 @@
 import React, { useReducer, useState } from 'react'
 import PropTypes from 'prop-types'
-import { clearStorage, generateLocalStorageBackedReducer } from './localStorageUtils'
+import {
+  clearStorage,
+  generateLocalStorageBackedReducer
+} from './localStorageUtils'
 import { reducer, resetValues, updateValues } from './wizardReducer'
 
 function FormdataWizard(props) {
-  const { children, name, onStartOver, onFinish, resetSetter } = props
+  const {
+    children,
+    name,
+    onStartOver,
+    onFinish,
+    resetSetter,
+    defaultFormData
+  } = props
   const childArray = React.Children.toArray(children)
   // set up a local storage backed reducer, so that we get resumes across reload, etc
   const {
     storageBackedReducer,
     initialValue
-  } = generateLocalStorageBackedReducer(name, reducer)
+  } = generateLocalStorageBackedReducer(name, reducer, defaultFormData)
   const [formData, formDataDispatch] = useReducer(
     storageBackedReducer,
     initialValue
@@ -29,7 +39,7 @@ function FormdataWizard(props) {
   function resetWizard() {
     formDataDispatch(resetValues())
     // we'll also manually, clear the stored data, in case we navigate away before the dispatcher fires
-    clearStorage(name);
+    clearStorage(name)
     // reset the step state
     setStepState(initialStepState)
   }
