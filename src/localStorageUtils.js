@@ -47,7 +47,7 @@ export function generateLocalStorageBackedReducer(
     return newState
   }
   let initialValue = getStorageObject(localStorageKey)
-  if (initialValue === {} && defaultValue) {
+  if (Object.keys(initialValue).length === 0 && defaultValue) {
     setStorageObject(localStorageKey, defaultValue)
     initialValue = defaultValue
   }
