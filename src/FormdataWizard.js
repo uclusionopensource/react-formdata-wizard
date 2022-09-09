@@ -13,7 +13,8 @@ function FormdataWizard(props) {
     onStartOver,
     onFinish,
     resetSetter,
-    defaultFormData
+    defaultFormData,
+    startStep,
   } = props
   const childArray = React.Children.toArray(children)
   // set up a local storage backed reducer, so that we get resumes across reload, etc
@@ -26,7 +27,7 @@ function FormdataWizard(props) {
     initialValue
   )
   const initialStepState = {
-    currentStep: 0,
+    currentStep: startStep, // start where we're told if not 0
     totalSteps: childArray.length
   }
   // data to track what step we're on
@@ -123,13 +124,15 @@ FormdataWizard.propTypes = {
   onFinish: PropTypes.func,
   resetSetter: PropTypes.func,
   onStartOver: PropTypes.func,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  startStep: PropTypes.number,
 }
 
 FormdataWizard.defaultProps = {
   onFinish: () => {},
   resetSetter: () => {},
-  onStartOver: () => {}
+  onStartOver: () => {},
+  startStep: 0,
 }
 
 export { FormdataWizard }

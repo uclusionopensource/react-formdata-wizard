@@ -50,6 +50,7 @@ onStartOver | function called with zero arguments that is called when the form i
 onFinish | function called with either the form data or a specific return value that is called when the form finishes normally | N
 resetSetter | function that will be called with a variable containing a function that can reset the wizard. This allows higher level components to cause a reset for their own reasons. | N
 defaultFormData | default form data to apply on creation if nothing is stored locally. | N
+startStep: / the step to start the wizard from. Used if some steps are no longer needed | N
 
 
 ## Props provided to All Children
