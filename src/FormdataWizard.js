@@ -14,14 +14,12 @@ function FormdataWizard(props) {
     onFinish,
     resetSetter,
     defaultFormData,
-    startStep,
+    startStep
   } = props
   const childArray = React.Children.toArray(children)
   // set up a local storage backed reducer, so that we get resumes across reload, etc
-  const {
-    storageBackedReducer,
-    initialValue
-  } = generateLocalStorageBackedReducer(name, reducer, defaultFormData)
+  const { storageBackedReducer, initialValue } =
+    generateLocalStorageBackedReducer(name, reducer, defaultFormData)
   const [formData, formDataDispatch] = useReducer(
     storageBackedReducer,
     initialValue
@@ -70,15 +68,15 @@ function FormdataWizard(props) {
 
   /**
    * nextStep advances us to the next step,
-   * if we have it
+   * if we have it - by increment if provided
    */
-  function nextStep() {
-    if (stepState.currentStep === childArray.length - 1) {
+  function nextStep(increment = 1) {
+    if (stepState.currentStep >= childArray.length - increment) {
       return
     }
     setStepState({
       ...stepState,
-      currentStep: stepState.currentStep + 1
+      currentStep: stepState.currentStep + increment
     })
   }
 
@@ -125,14 +123,14 @@ FormdataWizard.propTypes = {
   resetSetter: PropTypes.func,
   onStartOver: PropTypes.func,
   name: PropTypes.string.isRequired,
-  startStep: PropTypes.number,
+  startStep: PropTypes.number
 }
 
 FormdataWizard.defaultProps = {
   onFinish: () => {},
   resetSetter: () => {},
   onStartOver: () => {},
-  startStep: 0,
+  startStep: 0
 }
 
 export { FormdataWizard }
