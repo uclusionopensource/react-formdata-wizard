@@ -43,14 +43,15 @@ The actual step rendered is a _clone_ of the child representing the current step
 cannot maintain their own state, and should use the form data instead of useState or useReducer
 
 ## Props accepted by the Wizard
-Property Name | Property Description | Required
---- | --- | ---
-name | the 'name' of the wizard. Should be unique as it will determine the local storage key used | Y
-onStartOver | function called with zero arguments that is called when the form is started over _without_ completing | N
-onFinish | function called with either the form data or a specific return value that is called when the form finishes normally | N
+Property Name | Property Description                                                                                                                                                      | Required
+--- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ---
+name | the 'name' of the wizard. Should be unique as it will determine the local storage key used                                                                                | Y
+onStartOver | function called with zero arguments that is called when the form is started over _without_ completing                                                                     | N
+onFinish | function called with either the form data or a specific return value that is called when the form finishes normally                                                       | N
 resetSetter | function that will be called with a variable containing a function that can reset the wizard. This allows higher level components to cause a reset for their own reasons. | N
-defaultFormData | default form data to apply on creation if nothing is stored locally. | N
-startStep: / the step to start the wizard from. Used if some steps are no longer needed | N
+defaultFormData | default form data to apply on creation if nothing is stored locally.                                                                                                      | N
+useLocalStorage | whether to back the wizard with local storage or not                                                                                                                      | Y
+startStep |  the step to start the wizard from. Used if some steps are no longer needed                                                                                               | N
 
 
 ## Props provided to All Children
@@ -61,7 +62,7 @@ totalSteps | the number of steps we have
 formData | the current form data accumulated so far
 updateFormData | function that takes an update object and merges the existing formdata with the update object
 clearFormData | function that resets the form data to the empty object
-nextStep | function that advances the wizard to the next step
+nextStep | function that advances the wizard by increment steps where increment defaults to one
 previousStep | function that regresses teh wizzard to the previous step
 startOver | function that calls onStartOver and then resets the wizard to the initial state
 active | boolean that tells the step if it is the currently active step
