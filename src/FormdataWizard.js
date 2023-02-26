@@ -61,7 +61,8 @@ function FormdataWizard(props) {
    */
   function finish(finishValue) {
     const clone = { ...formData }
-    resetWizard()
+    // Should not reset the in memory values here or will cause re-render and be visible to user
+    clearStorage(name)
     if (finishValue) {
       onFinish(finishValue)
     } else {
