@@ -21,9 +21,10 @@ export function updateValues(newValues) {
  * will empty out the state
  * @returns {{type: string}}
  */
-export function resetValues() {
+export function resetValues(initialState) {
   return {
-    type: RESET_VALUES
+    type: RESET_VALUES,
+    initialState,
   }
 }
 
@@ -36,7 +37,9 @@ export function reducer(state, action) {
         ...action.newValues
       }
     case RESET_VALUES:
-      return {}
+      return {
+        ...action.initialState
+      }
     default:
       return state
   }
