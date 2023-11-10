@@ -101,7 +101,7 @@ function FormdataWizard(props) {
   function getCurrentStepContents() {
     const { steps, formData } = stateData
     const props = {
-      steps,
+      ...steps,
       formData,
       updateFormData: (data) =>
         stateDataDispatch(updateValues({ formData: { ...formData, ...data } })),
