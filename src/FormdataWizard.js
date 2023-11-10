@@ -104,7 +104,7 @@ function FormdataWizard(props) {
       steps,
       formData,
       updateFormData: (data) =>
-        stateDataDispatch(updateValues({ ...formData, ...data })),
+        stateDataDispatch(updateValues({ formData: { ...formData, ...data } })),
       clearFormData: () => stateDataDispatch(resetValues(initialState)),
       nextStep,
       previousStep,
