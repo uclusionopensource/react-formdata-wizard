@@ -33,16 +33,14 @@ function FormdataWizard(props) {
   const [stateData, stateDataDispatch] = useReducer(
     storageBackedReducer,
     initialValue
-  );
+  )
   // data to track what step we're on
-
-
   /** Resetting the wizard clears the form data and sets us to the initial step state
    *
    */
   function resetWizard() {
-    clearStorage(name);
-    stateDataDispatch(resetValues(initialState));
+    clearStorage(name)
+    stateDataDispatch(resetValues(initialState))
   }
 
   /**
@@ -74,39 +72,40 @@ function FormdataWizard(props) {
    * if we have it - by increment if provided
    */
   function nextStep(increment = 1) {
-    const { steps } = stateData;
+    const { steps } = stateData
     if (steps.currentStep >= childArray.length - increment) {
       return
     }
     const newSteps = {
       ...steps,
       currentStep: steps.currentStep + increment
-    };
-    stateDataDispatch(updateValues({steps: newSteps}));
+    }
+    stateDataDispatch(updateValues({ steps: newSteps }))
   }
 
   /**
    * previousStep moves us back one step if it exists
    */
   function previousStep() {
-    const { steps } = stateData;
+    const { steps } = stateData
     if (steps.currentStep === 0) {
-      return;
+      return
     }
     const newSteps = {
       ...steps,
       currentStep: steps.currentStep - 1
-    };
-    stateDataDispatch(updateValues({steps: newSteps}));
+    }
+    stateDataDispatch(updateValues({ steps: newSteps }))
   }
 
   function getCurrentStepContents() {
-    const {steps, formData} = stateData;
+    const { steps, formData } = stateData
     const props = {
       steps,
       formData,
-      updateFormData: (data) => formDataDispatch(updateValues({...formData, ...data})),
-      clearFormData: () => formDataDispatch(resetValues(initialState)),
+      updateFormData: (data) =>
+        stateDataDispatch(updateValues({ ...formData, ...data })),
+      clearFormData: () => stateDataDispatch(resetValues(initialState)),
       nextStep,
       previousStep,
       startOver,
