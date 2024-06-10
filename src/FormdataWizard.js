@@ -112,16 +112,11 @@ function FormdataWizard(props) {
       active: true,
       finish
     }
-    if (
-      !childArray ||
-      childArray.length === 0 ||
-      !steps ||
-      !steps.currentStep
-    ) {
+    if (!childArray || childArray.length === 0 || !steps) {
       return React.Fragment
     }
     let currentStep
-    if (steps.currentStep >= childArray.length) {
+    if (!steps.currentStep || steps.currentStep >= childArray.length) {
       currentStep = childArray[childArray.length - 1]
     } else {
       currentStep = childArray[steps.currentStep]
