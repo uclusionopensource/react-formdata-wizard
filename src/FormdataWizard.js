@@ -112,13 +112,19 @@ function FormdataWizard(props) {
       active: true,
       finish
     }
-    let currentStep = childArray[steps.currentStep]
-    if (!currentStep) {
-      if (childArray.length > 0) {
-        currentStep = childArray[childArray.length - 1]
-      } else {
-        return React.Fragment
-      }
+    if (
+      !childArray ||
+      childArray.length === 0 ||
+      !steps ||
+      !steps.currentStep
+    ) {
+      return React.Fragment
+    }
+    let currentStep
+    if (steps.currentStep >= childArray.length) {
+      currentStep = childArray[childArray.length - 1]
+    } else {
+      currentStep = childArray[steps.currentStep]
     }
     // Because we use clone element here, the internal state of the element can't be maintained. Hence
     // callers should use the formdata to pass values.
